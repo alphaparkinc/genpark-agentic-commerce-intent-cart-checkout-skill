@@ -1,0 +1,48 @@
+{
+  "name": "genpark-agentic-commerce-intent-cart-checkout-skill",
+  "version": "1.0.0",
+  "description": "Universal Agentic Commerce Multi-Merchant Cart & Checkout Engine (inspired by Meta Muse, Shopify, Instacart, Walmart, Expedia). Translates consumer intent into aggregated item discovery, cross-merchant cart consolidation, and structured transaction checkout payloads.",
+  "tools": [
+    {
+      "name": "manage_commerce_intent",
+      "description": "Parse consumer shopping goals, assemble multi-merchant carts, calculate checkout summaries, and compile delegated order payloads.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "parse_shopping_intent",
+              "aggregate_multi_merchant_cart",
+              "calculate_checkout_summary",
+              "generate_delegated_order"
+            ],
+            "description": "Commerce action."
+          },
+          "goal_text": {
+            "type": "string",
+            "description": "User intent (e.g. 'Plan 3-day beach weekend groceries from Instacart and beach chairs from Walmart')."
+          },
+          "budget_max": {
+            "type": "number",
+            "description": "Maximum budget ceiling in USD."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "List of cart item specifications."
+          },
+          "delivery_address": {
+            "type": "string",
+            "description": "Destination delivery address or airport."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
